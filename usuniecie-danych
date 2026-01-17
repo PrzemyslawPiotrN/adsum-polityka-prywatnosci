@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Usuwanie danych – Adsum</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.7; color: #333; background: #f8f9fa; }
+        .container { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); text-align: center; }
+        h1 { font-size: 2em; margin-bottom: 20px; color: #1a1a1a; }
+        p { margin-bottom: 20px; color: #4a5568; }
+        .contact-box { background: #fff5f5; border: 1px solid #fed7d7; padding: 25px; border-radius: 8px; margin: 30px 0; }
+        .email-link { font-size: 1.2em; font-weight: bold; color: #c53030; text-decoration: none; border-bottom: 2px solid #feb2b2; }
+        .email-link:hover { color: #9b2c2c; border-color: #f56565; }
+        .steps { text-align: left; background: #f7fafc; padding: 20px 20px 20px 40px; border-radius: 8px; margin-bottom: 30px; }
+        .steps li { margin-bottom: 10px; }
+        .footer-link { font-size: 0.9em; color: #4a90e2; text-decoration: none; }
+        @media (max-width: 600px) { .container { padding: 25px 15px; } h1 { font-size: 1.5em; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Jak usunąć konto i dane?</h1>
+        <p>Szanujemy Twoją prywatność. Jeśli chcesz usunąć swoje dane z aplikacji <strong>Adsum</strong>, możesz to zrobić w dowolnym momencie.</p>
+        
+        <div class="steps">
+            <strong>Instrukcja:</strong>
+            <ul>
+                <li>Wyślij wiadomość e-mail z prośbą o usunięcie danych.</li>
+                <li>W treści podaj swoje imię i nazwisko użyte w aplikacji (lub identyfikator użytkownika).</li>
+                <li>Twoje dane zostaną trwale usunięte z bazy danych Firestore w ciągu 30 dni.</li>
+            </ul>
+        </div>
+
+        <div class="contact-box">
+            <p>Wyślij prośbę na adres:</p>
+            <a href="mailto:przemyslaw.biz@gmail.com" class="email-link">przemyslaw.biz@gmail.com</a>
+        </div>
+
+        <p>Pamiętaj, że po usunięciu danych nie będzie możliwe odzyskanie dostępu do historii Twoich wycieczek ani czatów.</p>
+        
+        <a href="index.html" class="footer-link">← Powrót do pełnej Polityki Prywatności</a>
+    </div>
+</body>
+</html>
