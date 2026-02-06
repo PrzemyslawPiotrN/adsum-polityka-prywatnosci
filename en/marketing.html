@@ -2,372 +2,421 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Adsum – App overview</title>
+    <title>Adsum – Attendance Management for Trip Organizers</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Adsum is a simple iOS app that helps you stay on top of important classes, meetings and events.">
+    <meta name="description" content="The perfect attendance management app for trip organizers, teachers, guides, and event coordinators. Count your group in seconds!">
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            max-width: 900px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
-            line-height: 1.7;
-            color: #1a202c;
-            background: radial-gradient(circle at top left, #ebf8ff, #f7fafc 55%);
         }
-        .page {
-            background: #ffffff;
-            border-radius: 16px;
-            padding: 40px 32px;
-            box-shadow: 0 18px 45px rgba(15, 23, 42, 0.10);
-        }
-        header {
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-            margin-bottom: 32px;
-        }
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 4px 10px;
-            border-radius: 999px;
-            background: #ebf8ff;
-            border: 1px solid #bee3f8;
-            font-size: 0.8rem;
-            color: #2b6cb0;
-            width: fit-content;
-        }
-        .badge-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #38a169;
-        }
-        h1 {
-            font-size: clamp(2rem, 3vw, 2.4rem);
-            letter-spacing: -0.03em;
-            color: #1a202c;
-        }
-        .subtitle {
-            font-size: 1rem;
-            color: #4a5568;
-            max-width: 560px;
-        }
-        .hero {
-            display: grid;
-            grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-            gap: 32px;
-            align-items: center;
-        }
-        .hero-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 8px;
-        }
-        .primary-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 10px 18px;
-            border-radius: 999px;
-            border: none;
-            background: linear-gradient(135deg, #3182ce, #2b6cb0);
+        
+        .header {
+            text-align: center;
+            padding: 60px 20px 40px;
             color: white;
-            font-size: 0.95rem;
-            font-weight: 600;
-            text-decoration: none;
-            box-shadow: 0 10px 24px rgba(49, 130, 206, 0.35);
-            transition: transform 0.1s ease, box-shadow 0.1s ease, filter 0.1s ease;
         }
-        .primary-btn:hover {
-            filter: brightness(1.05);
-            transform: translateY(-1px);
-            box-shadow: 0 14px 30px rgba(43, 108, 176, 0.45);
+        
+        .header h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
-        .secondary-link {
-            font-size: 0.9rem;
-            color: #2b6cb0;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
+        
+        .header .tagline {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            opacity: 0.95;
+            font-weight: 300;
         }
-        .secondary-link:hover {
-            text-decoration: underline;
-        }
-        .phone-preview {
-            position: relative;
-            width: 100%;
-            max-width: 290px;
-            margin: 0 auto;
-        }
-        .phone-body {
-            position: relative;
-            border-radius: 32px;
-            padding: 18px 14px;
-            background: radial-gradient(circle at top, #f9fafb, #e2e8f0);
-            box-shadow:
-                0 18px 35px rgba(15, 23, 42, 0.12),
-                0 0 0 1px rgba(148, 163, 184, 0.4);
-        }
-        .phone-inner {
-            background: #0f172a;
-            border-radius: 24px;
-            padding: 10px;
-            position: relative;
-            overflow: hidden;
-        }
-        .phone-status {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: #e5e7eb;
-            font-size: 0.6rem;
+        
+        .header .subtitle {
+            font-size: 1.2em;
+            max-width: 800px;
+            margin: 0 auto 40px;
             opacity: 0.9;
-            margin-bottom: 8px;
         }
-        .phone-screen {
-            background: radial-gradient(circle at top, #1f2937, #020617);
-            border-radius: 18px;
-            padding: 14px 12px 16px;
-            color: #e5e7eb;
-            font-size: 0.8rem;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
+        
+        .lang-switcher {
+            position: absolute;
+            top: 20px;
+            right: 20px;
         }
-        .screen-tag {
-            font-size: 0.7rem;
-            color: #9ca3af;
-            text-transform: uppercase;
-            letter-spacing: 0.09em;
+        
+        .lang-switcher a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 20px;
+            font-size: 0.9em;
+            transition: background 0.3s;
         }
-        .screen-title {
-            font-size: 0.95rem;
-            font-weight: 600;
-            margin-bottom: 2px;
+        
+        .lang-switcher a:hover {
+            background: rgba(255,255,255,0.3);
         }
-        .screen-list {
-            margin-top: 6px;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
+        
+        .content {
+            background: white;
+            border-radius: 20px 20px 0 0;
+            padding: 60px 40px;
+            box-shadow: 0 -5px 30px rgba(0,0,0,0.1);
         }
-        .screen-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 7px 8px;
-            border-radius: 9px;
-            background: rgba(15, 23, 42, 0.65);
-            border: 1px solid rgba(148, 163, 184, 0.45);
-        }
-        .screen-item-main {
-            display: flex;
-            flex-direction: column;
-            gap: 1px;
-        }
-        .screen-item-title {
-            font-size: 0.75rem;
-        }
-        .screen-item-sub {
-            font-size: 0.7rem;
-            color: #9ca3af;
-        }
-        .screen-pill {
-            padding: 2px 7px;
-            border-radius: 999px;
-            font-size: 0.65rem;
-            background: #22c55e33;
-            color: #bbf7d0;
-            border: 1px solid #4ade80;
-        }
+        
         .section {
+            margin-bottom: 60px;
+        }
+        
+        .section-title {
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            color: #2c5282;
+            text-align: center;
+            position: relative;
+            padding-bottom: 20px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
             margin-top: 40px;
         }
-        .section-title {
-            font-size: 1.2rem;
-            margin-bottom: 12px;
-            color: #1f2933;
-        }
-        .pill-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 8px;
-        }
-        .pill {
-            font-size: 0.8rem;
-            padding: 4px 10px;
-            border-radius: 999px;
-            background: #edf2f7;
-            color: #2d3748;
-        }
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 18px;
-            margin-top: 12px;
-        }
-        .feature {
-            padding: 14px 12px;
+        
+        .feature-card {
+            background: #f8f9fa;
+            padding: 30px;
             border-radius: 12px;
-            background: #f7fafc;
-            border: 1px solid #edf2f7;
+            border-left: 4px solid #667eea;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-        .feature h3 {
-            font-size: 0.95rem;
-            margin-bottom: 6px;
-            color: #1a202c;
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
-        .feature p {
-            font-size: 0.8rem;
+        
+        .feature-card h3 {
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            color: #2c5282;
+            display: flex;
+            align-items: center;
+        }
+        
+        .feature-card h3::before {
+            content: '✓';
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            background: #667eea;
+            color: white;
+            border-radius: 50%;
+            margin-right: 12px;
+            text-align: center;
+            line-height: 28px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        
+        .feature-card p {
             color: #4a5568;
+            line-height: 1.6;
         }
-        .meta {
-            margin-top: 32px;
-            font-size: 0.8rem;
-            color: #718096;
+        
+        .screenshots {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
         }
-        .meta a {
-            color: #2b6cb0;
+        
+        .screenshot {
+            text-align: center;
+        }
+        
+        .screenshot img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+        
+        .screenshot img:hover {
+            transform: scale(1.05);
+        }
+        
+        .use-cases {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 40px;
+            border-radius: 12px;
+            margin-top: 40px;
+        }
+        
+        .use-cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .use-case {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border-top: 3px solid #667eea;
+        }
+        
+        .use-case h4 {
+            color: #2c5282;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .cta-section {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 12px;
+            margin-top: 60px;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            font-size: 1.3em;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 18px 40px;
+            background: white;
+            color: #667eea;
             text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
-        .meta a:hover {
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        
+        .links {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        .links a {
+            display: inline-block;
+            margin: 5px 15px;
+            color: #4a90e2;
+            text-decoration: none;
+            font-size: 0.95em;
+        }
+        
+        .links a:hover {
             text-decoration: underline;
         }
-        @media (max-width: 800px) {
-            .page { padding: 28px 20px; }
-            .hero { grid-template-columns: minmax(0, 1fr); }
-        }
-        @media (max-width: 500px) {
-            .page { padding: 22px 16px; }
-            h1 { font-size: 1.7rem; }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.2em;
+            }
+            
+            .header .tagline {
+                font-size: 1.2em;
+            }
+            
+            .content {
+                padding: 40px 20px;
+            }
+            
+            .section-title {
+                font-size: 2em;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .screenshots {
+                grid-template-columns: 1fr;
+            }
+            
+            .lang-switcher {
+                position: static;
+                text-align: center;
+                margin-bottom: 20px;
+            }
         }
     </style>
 </head>
 <body>
-    <main class="page">
-        <header>
-            <div class="badge">
-                <span class="badge-dot"></span>
-                <span>Available on iOS</span>
-            </div>
-            <h1>Adsum – remember where you need to be</h1>
-            <p class="subtitle">
-                Adsum is a focused, minimal app that helps you keep track of important classes, meetings and events.
-                No clutter – just clear reminders so you can show up where it matters.
-            </p>
-            <div class="hero">
-                <div>
-                    <div class="hero-actions">
-                        <!-- TODO: replace the link below with your real App Store URL -->
-                        <a href="https://apps.apple.com" class="primary-btn">
-                            Download on the App Store
-                        </a>
-                        <a href="support.html" class="secondary-link">
-                            Contact & support
-                        </a>
+    <div class="container">
+        <div class="lang-switcher">
+            <a href="../marketing.html">Polski</a>
+        </div>
+        
+        <div class="header">
+            <h1>Adsum</h1>
+            <p class="tagline">Attendance Management in Seconds</p>
+            <p class="subtitle">The perfect attendance management app for trip organizers, teachers, guides, and event coordinators. Forget paper lists and time-consuming attendance checks – count your group in seconds!</p>
+        </div>
+        
+        <div class="content">
+            <section class="section">
+                <h2 class="section-title">Key Features</h2>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3>Lightning-Fast Attendance</h3>
+                        <p>Start a roll call and see in real-time who's present, who's on the way, and who's missing. Participants confirm their attendance with a single tap.</p>
                     </div>
-                    <section class="section">
-                        <h2 class="section-title">What makes Adsum useful?</h2>
-                        <div class="pill-row">
-                            <span class="pill">Clear reminders</span>
-                            <span class="pill">No unnecessary features</span>
-                            <span class="pill">Designed for iPhone</span>
-                        </div>
-                        <div class="feature-grid">
-                            <article class="feature">
-                                <h3>Focused on presence</h3>
-                                <p>You only track what truly matters – Adsum keeps you on top of where and when you should be present.</p>
-                            </article>
-                            <article class="feature">
-                                <h3>At-a-glance overview</h3>
-                                <p>See your day in a single view. One quick look is enough to know what is coming next.</p>
-                            </article>
-                            <article class="feature">
-                                <h3>Gentle notifications</h3>
-                                <p>Smart reminders give you enough time to react, without overwhelming you with alerts.</p>
-                            </article>
-                        </div>
-                    </section>
+                    
+                    <div class="feature-card">
+                        <h3>Easy Group Joining</h3>
+                        <p>Share a unique code or QR code with your group. Participants join instantly by scanning or entering the code – no registration required.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h3>Announcements</h3>
+                        <p>Inform everyone with instant announcements. Every participant receives a push notification immediately.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h3>Trip Schedule</h3>
+                        <p>Create a detailed schedule with dates, times, and locations. Participants always know what's next.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h3>Built-in Chat</h3>
+                        <p>Group chat for the entire trip and private messages between participants and organizers. Stay connected throughout the journey.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h3>Co-organizers</h3>
+                        <p>Invite co-organizers to help manage the trip. Share responsibilities for attendance counting and sending announcements.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h3>Participants Without App</h3>
+                        <p>Add participants who don't have smartphones. Mark their attendance manually during roll calls.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h3>PDF Export</h3>
+                        <p>Generate QR codes for printing and easy distribution.</p>
+                    </div>
                 </div>
-                <aside class="phone-preview" aria-hidden="true">
-                    <div class="phone-body">
-                        <div class="phone-inner">
-                            <div class="phone-status">
-                                <span>9:41</span>
-                                <span>LTE • 100%</span>
-                            </div>
-                            <div class="phone-screen">
-                                <span class="screen-tag">Today</span>
-                                <div>
-                                    <div class="screen-title">Your presence</div>
-                                    <div class="screen-list">
-                                        <div class="screen-item">
-                                            <div class="screen-item-main">
-                                                <span class="screen-item-title">Morning class</span>
-                                                <span class="screen-item-sub">8:15 • room 203</span>
-                                            </div>
-                                            <span class="screen-pill">Remind</span>
-                                        </div>
-                                        <div class="screen-item">
-                                            <div class="screen-item-main">
-                                                <span class="screen-item-title">Team meeting</span>
-                                                <span class="screen-item-sub">1:00 PM • online</span>
-                                            </div>
-                                            <span class="screen-pill">15 min before</span>
-                                        </div>
-                                        <div class="screen-item">
-                                            <div class="screen-item-main">
-                                                <span class="screen-item-title">Evening event</span>
-                                                <span class="screen-item-sub">7:30 PM • downtown</span>
-                                            </div>
-                                            <span class="screen-pill">Done</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+            </section>
+            
+            <section class="section">
+                <h2 class="section-title">See the App in Action</h2>
+                <div class="screenshots">
+                    <div class="screenshot">
+                        <img src="../../screenshots/en/Simulator Screenshot - iPhone 13 Pro Max - 2026-02-05 at 22.25.23.png" alt="Adsum app screenshot">
+                    </div>
+                    <div class="screenshot">
+                        <img src="../../screenshots/en/Simulator Screenshot - iPhone 13 Pro Max - 2026-02-05 at 22.25.36.png" alt="Adsum app screenshot">
+                    </div>
+                    <div class="screenshot">
+                        <img src="../../screenshots/en/Simulator Screenshot - iPhone 13 Pro Max - 2026-02-05 at 22.25.41.png" alt="Adsum app screenshot">
+                    </div>
+                </div>
+            </section>
+            
+            <section class="section">
+                <h2 class="section-title">Perfect For</h2>
+                <div class="use-cases">
+                    <div class="use-cases-grid">
+                        <div class="use-case">
+                            <h4>School and Class Trips</h4>
+                            <p>Check student attendance quickly and stress-free during every trip.</p>
+                        </div>
+                        
+                        <div class="use-case">
+                            <h4>Tour Groups and Guided Tours</h4>
+                            <p>Manage tourist groups and ensure no one gets left behind.</p>
+                        </div>
+                        
+                        <div class="use-case">
+                            <h4>Summer Camps and Youth Groups</h4>
+                            <p>Track participant attendance during all camp activities.</p>
+                        </div>
+                        
+                        <div class="use-case">
+                            <h4>Corporate and Team Events</h4>
+                            <p>Organize corporate events with easy participant management.</p>
+                        </div>
+                        
+                        <div class="use-case">
+                            <h4>Sports Teams and Clubs</h4>
+                            <p>Track team member attendance during training and competitions.</p>
+                        </div>
+                        
+                        <div class="use-case">
+                            <h4>Any Group Activity</h4>
+                            <p>All situations requiring attendance tracking.</p>
                         </div>
                     </div>
-                </aside>
+                </div>
+            </section>
+            
+            <div class="cta-section">
+                <h2>Ready for a Stress-Free Trip?</h2>
+                <p>Download Adsum and make your next trip stress-free!</p>
+                <a href="#" class="cta-button">Download Now</a>
             </div>
-        </header>
-
-        <section class="section">
-            <h2 class="section-title">Built with simplicity in mind</h2>
-            <p>
-                Many productivity apps are complex and overloaded with options. <strong>Adsum</strong> takes the opposite approach:
-                it does one thing well – helping you remember where and when you should be present.
-            </p>
-        </section>
-
-        <section class="section">
-            <h2 class="section-title">Privacy & support</h2>
-            <p>
-                We care about your privacy and clear rules for using the app. You can find all the details in our privacy policy
-                and data deletion information.
-            </p>
-            <p class="meta">
-                • <a href="index.html">Privacy Policy (EN)</a><br>
-                • <a href="data-deletion.html">Data deletion (EN)</a><br>
-                • <a href="support.html">Support & contact</a>
-            </p>
-        </section>
-
-        <section class="section meta">
-            <p>
-                This page is informational and can be used as the <strong>Marketing URL</strong> in App Store Connect.
-                If you have any questions about the app or this page, feel free to contact us at
-                <a href="mailto:przemyslaw.biz@gmail.com">przemyslaw.biz@gmail.com</a>.
-            </p>
-        </section>
-    </main>
+            
+            <div class="links">
+                <a href="index.html">Privacy Policy</a>
+                <a href="support.html">Support</a>
+                <a href="data-deletion.html">Data Deletion</a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
-
